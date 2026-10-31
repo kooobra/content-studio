@@ -9,25 +9,40 @@
   "lang": "ar",
   "dir": "rtl",
   "logo": "assets/logo.svg",
-
   "colors": {
-    "$comment": "primary = highlight/buttons, accent = second highlight, ink = the dark stage. The rest are optional gradient stops; they fall back to these three.",
+    "$comment": "primary = highlight/buttons, accent = second highlight, ink = the dark stage, onPrimary = text on primary (default #fff; use a dark colour for a light primary such as gold). The rest are optional gradient stops.",
     "primary": "#FF2D9B",
     "accent": "#00E5FF",
-    "ink": "#0B0B10"
+    "ink": "#0B0B10",
+    "onPrimary": "#fff"
   },
-
   "font": {
     "family": "Tajawal",
-    "weights": [400, 500, 700, 800, 900],
+    "weights": [
+      400,
+      500,
+      700,
+      800,
+      900
+    ],
     "files": [
-      { "src": "fonts/tajawal/tajawal-{w}-arabic.woff2", "range": "U+0600-06FF,U+0750-077F,U+FB50-FDFF,U+FE70-FEFF,U+200C-200F,U+064B-065F" },
-      { "src": "fonts/tajawal/tajawal-{w}-latin.woff2", "range": "U+0000-00FF,U+2000-206F" }
-    ]
+      {
+        "src": "fonts/tajawal/tajawal-{w}-arabic.woff2",
+        "range": "U+0600-06FF,U+0750-077F,U+FB50-FDFF,U+FE70-FEFF,U+200C-200F,U+064B-065F"
+      },
+      {
+        "src": "fonts/tajawal/tajawal-{w}-latin.woff2",
+        "range": "U+0000-00FF,U+2000-206F"
+      }
+    ],
+    "$comment": "Optional: add \"heading\": {family, weights, files} for a separate headline font (e.g. El Messiri)."
   },
-
-  "assets": { "photos": "assets/photos", "ui": "assets/ui", "cut": "assets/cut", "credits": "assets/credits.txt" },
-
+  "assets": {
+    "photos": "assets/photos",
+    "ui": "assets/ui",
+    "cut": "assets/cut",
+    "credits": "assets/credits.txt"
+  },
   "characters": {
     "$comment": "Optional. Brand characters/mascots with a transparent cut-out (cut) and a round avatar. Leave list empty if the brand has none.",
     "default": null,
@@ -35,32 +50,52 @@
     "list": {},
     "voiceNoteTag": ""
   },
-
-  "cta": { "mega": "TODO كلمة كبيرة (مثل: مجاناً)", "button": "TODO نص الزر" },
-
-  "labels": { "surveyTag": "", "foodSurveyTag": "", "swipe": "اسحب", "pollReply": "جاوب بالخاص" },
-
+  "cta": {
+    "mega": "TODO كلمة كبيرة (مثل: مجاناً)",
+    "button": "TODO نص الزر"
+  },
+  "labels": {
+    "surveyTag": "",
+    "foodSurveyTag": "",
+    "swipe": "اسحب",
+    "pollReply": "جاوب بالخاص"
+  },
   "truth": {
     "doc": "truth.md",
-    "forbidden": ["100%", "مضمون"],
+    "forbidden": [
+      "100%",
+      "مضمون"
+    ],
     "westernDigits": true
   },
-
   "voice": {
     "file": "voice/voice.json",
     "model": "gemini-3.8-flash-tts",
     "namePrefix": "TODO-brand-id-ad",
-    "narrator": { "name": "TODO اسم البراند", "tag": "", "avatar": "assets/logo.svg" }
+    "narrator": {
+      "name": "TODO اسم البراند",
+      "tag": "",
+      "avatar": "assets/logo.svg"
+    }
   },
-
-  "capture": { "url": "https://TODO.example.com", "locale": "ar-SA", "dismiss": [], "shots": [] },
-
-  "defaults": { "motion": "auto", "transition": "auto", "fx": "auto" },
-
+  "capture": {
+    "url": "https://TODO.example.com",
+    "locale": "ar-SA",
+    "dismiss": [],
+    "shots": []
+  },
+  "defaults": {
+    "motion": "auto",
+    "transition": "auto",
+    "fx": "auto"
+  },
   "presets": {
     "narrator": {
       "model": "gemini-3.8-flash-tts",
-      "voice": { "gender": "male", "prompt": "TODO: who the narrator is (age, warmth, accent/dialect), in English." },
+      "voice": {
+        "gender": "male",
+        "prompt": "TODO: who the narrator is (age, warmth, accent/dialect), in English."
+      },
       "style": "TODO: default delivery, in English (energetic / calm / ...), and the dialect."
     },
     "styles": {
@@ -69,12 +104,31 @@
       "ask": "Warm, friendly question to the viewer, inviting a reply, relaxed pace."
     },
     "cta": {
-      "layout": "cta", "bg": "TODO-photo.jpg", "kick": "TODO", "h": "TODO العرض<br>بسطرين",
-      "chips": [["check", "TODO ميزة 1"], ["check", "TODO ميزة 2"]],
+      "layout": "cta",
+      "bg": "TODO-photo.jpg",
+      "kick": "TODO",
+      "h": "TODO العرض<br>بسطرين",
+      "chips": [
+        [
+          "check",
+          "TODO ميزة 1"
+        ],
+        [
+          "check",
+          "TODO ميزة 2"
+        ]
+      ],
       "fine": "TODO السطر الصغير (الشروط بصدق)"
     }
   },
-
-  "docs": { "rules": "rules.md", "brand": "brand.md", "truth": "truth.md", "voice": "voice.md", "publishing": "publishing.md", "examples": "examples" },
-  "specs": "specs"
+  "docs": {
+    "rules": "rules.md",
+    "brand": "brand.md",
+    "truth": "truth.md",
+    "voice": "voice.md",
+    "publishing": "publishing.md",
+    "examples": "examples"
+  },
+  "specs": "specs",
+  "finish": "neon"
 }

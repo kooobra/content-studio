@@ -56,6 +56,12 @@ export default {
 
 All existing scenes also take `label` (the kicker text next to the number) and `coach` where a coach appears; `phoneCallouts` takes `shot` and an optional `card`; `payoff` takes `phones:[shot, shot]` and `stickerIcons`.
 
+### Brand finish and fonts (brand.config.json)
+- `finish`: `neon` (default: gradients, glows, light leaks) or `flat` (solid brand colours only, for brands that forbid gradients).
+- `colors.onPrimary`: text/icon colour on primary blocks (highlights, stickers, CTA button, karaoke word); default `#fff`.
+- `font.heading`: a second family for headlines (`.h`, `.mega`); body text keeps `font.family`.
+- UI screens can be `.png`, `.jpg` or `.webp`: give the file name with its extension in `shot`.
+
 ### Motion
 `motion`, `transition` (spec or scene), `transitionDur` and `fx` are described in **references/motion.md** (10 transitions, 10 improvements, and what `auto` picks). New specs get the brand's `defaults` (auto for Smart AI Fitness); `look: "classic"` keeps the accepted Oct 2026 look.
 
