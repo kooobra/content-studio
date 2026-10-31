@@ -136,7 +136,7 @@ const extraCss = `
 .aw{position:absolute;inset:0;z-index:30}
 .abs>.aw:only-child,.col>.aw{position:relative;inset:auto}
 .wd{display:inline-block}
-.chip.on,.chip[data-tap].on{background:linear-gradient(135deg,${T.primary},${T.primaryDeep});border-color:transparent;color:#fff;box-shadow:0 10px 30px rgba(${R.primary},.45)}
+.chip.on,.chip[data-tap].on{background:linear-gradient(135deg,${T.primary},${T.primaryDeep});border-color:transparent;color:${T.onPrimary};box-shadow:0 10px 30px rgba(${R.primary},.45)}
 .caps{position:absolute;left:60px;right:140px;top:1310px;z-index:70}
 .cap{position:absolute;left:0;right:0;top:0;display:none;flex-direction:column;align-items:center;gap:14px}
 .cap .spk{display:flex;align-items:center;gap:12px;padding:7px 20px 7px 8px;border-radius:999px;background:rgba(${R.ink},.78);border:1.5px solid rgba(255,255,255,.16);font-size:26px;font-weight:800}
@@ -146,7 +146,7 @@ const extraCss = `
 .cap .ln{text-align:center;font-weight:900;font-size:62px;line-height:1.3;text-wrap:balance;max-width:880px;text-shadow:0 4px 0 rgba(0,0,0,.35),0 6px 30px rgba(0,0,0,.9)}
 .cap .w{display:inline-block;padding:2px 12px 0;border-radius:16px;color:rgba(255,255,255,.45)}
 .cap .w.said{color:#fff}
-.cap .w.now{color:#fff;background:${P};box-shadow:0 10px 30px rgba(${R.primary},.55);text-shadow:none}
+.cap .w.now{color:${T.onPrimary};background:${P};box-shadow:0 10px 30px rgba(${R.primary},.55);text-shadow:none}
 .bars{position:absolute;left:40px;right:40px;top:36px;display:flex;gap:8px;z-index:85;direction:ltr}
 .bars i{flex:1;height:6px;border-radius:6px;background:rgba(255,255,255,.25);overflow:hidden;display:block}
 .bars i b{display:block;height:100%;width:0;background:#fff}

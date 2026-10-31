@@ -137,7 +137,7 @@ export const layouts = {
       <div class="mega" style="font-size:${S ? 250 : 190}px">${d.mega ?? brand.cta.mega}</div>
       <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:${S ? 6 : 0}px">${d.chips.map(([ic, t]) => `<span class="tchip" style="font-size:${S ? 31 : 25}px">${icon(ic, S ? 30 : 24, C)}${t}</span>`).join("")}</div>
       <div style="display:flex;align-items:center;justify-content:space-between;margin-top:${S ? 34 : 24}px">
-        <div class="cta-btn" style="font-size:${S ? 56 : 48}px;padding:${S ? "26px 58px 20px" : "22px 50px 16px"}">${d.button ?? brand.cta.button} ${icon("arrow", S ? 50 : 42, "#fff", 2.8)}</div>
+        <div class="cta-btn" style="font-size:${S ? 56 : 48}px;padding:${S ? "26px 58px 20px" : "22px 50px 16px"}">${d.button ?? brand.cta.button} ${icon("arrow", S ? 50 : 42, T.onPrimary, 2.8)}</div>
         <div class="url" style="font-size:${S ? 46 : 40}px">${brand.url}</div>
       </div>
       <div style="display:flex;align-items:center;gap:16px;margin-top:${S ? 34 : 20}px">

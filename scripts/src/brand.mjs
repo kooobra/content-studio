@@ -51,7 +51,7 @@ const need = (k) => { if (raw[k] == null) throw new Error(`${BRAND_FILE}: "${k}"
 const c0 = need("colors");
 for (const k of ["primary", "accent", "ink"]) if (!c0[k]) throw new Error(`${BRAND_FILE}: colors.${k} is required`);
 const colors = {
-  primaryDeep: c0.primary, violet: c0.accent, onAccent: c0.ink, ctaMid: c0.primaryDeep || c0.primary,
+  onPrimary: "#fff", primaryDeep: c0.primary, violet: c0.accent, onAccent: c0.ink, ctaMid: c0.primaryDeep || c0.primary,
   megaMid: c0.violet || c0.accent, megaEnd: c0.primary, gradMid: c0.violet || c0.accent,
   duoMid: c0.ink, duoLow: c0.ink, ...c0,
 };
@@ -71,6 +71,10 @@ export const brand = {
   logo: burl(need("logo")),
   colors, rgb,
   font: raw.font,
+  // optional second family for headlines (.h, .mega, .outline), e.g. El Messiri; body text keeps font
+  headingFont: raw.font?.heading || null,
+  // "neon" (default): gradients, glows, light leaks. "flat": solid brand colours, no gradients or leaks (for brands that forbid them)
+  finish: raw.finish || "neon",
   assets: { photos: bpath(raw.assets?.photos || "assets/photos"), ui: bpath(raw.assets?.ui || "assets/ui"),
             cut: bpath(raw.assets?.cut || "assets/cut"), credits: bpath(raw.assets?.credits || "assets/credits.txt") },
   characters, cast: chars.cast || Object.keys(characters), defaultCharacter: chars.default || Object.keys(characters)[0] || null,

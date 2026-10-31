@@ -13,8 +13,26 @@ export const OUT_BASE = path.resolve(process.env.CONTENT_OUT || "marketing-out")
 // Brand font: one @font-face per weight and file (e.g. Arabic + Latin subsets, both needed or Latin text falls back).
 const F = brand.font;
 export const FONT = F.family;
-export const fontFaces = F.weights.map(w => F.files.map(x => `
-@font-face{font-family:${F.family};font-weight:${w};src:url(${burl(x.src.replace("{w}", w))}) format('woff2');${x.range ? `unicode-range:${x.range};` : ""}}`).join("")).join("");
+const faces = (G) => G.weights.map(w => G.files.map(x => `
+@font-face{font-family:${G.family};font-weight:${w};src:url(${burl(x.src.replace("{w}", w))}) format('woff2');${x.range ? `unicode-range:${x.range};` : ""}}`).join("")).join("");
+const HF = brand.headingFont;
+export const fontFaces = faces(F) + (HF ? faces(HF) : "");
+// brand-level CSS added after the design system: heading font and the "flat" finish. Empty for a brand that sets neither.
+export const brandCss = () => (HF ? `
+.h,.mega,.outline,.qc .q{font-family:${HF.family},${F.family},sans-serif}` : "") + (brand.finish === "flat" ? `
+.hl{box-shadow:none}
+.chip.on,.chip[data-tap].on{background:${T.primary};box-shadow:none}
+.qc .row.on{background:rgba(${R.primary},.22);box-shadow:none}
+.cta-btn{background:${T.primary};box-shadow:0 18px 40px rgba(0,0,0,.35)}
+.mega{background:none;-webkit-text-fill-color:${T.primary};color:${T.primary};filter:drop-shadow(0 8px 30px rgba(0,0,0,.45))}
+.grad{background:none;-webkit-text-fill-color:${T.primary};color:${T.primary}}
+.leak,.flash{display:none}
+.duo:after{background:${T.ink};opacity:.55}
+.dark:after{background:${T.ink};mix-blend-mode:multiply;opacity:.35}
+.teal:after{background:none}
+.badge{box-shadow:0 24px 60px rgba(0,0,0,.55)}
+.cap .w.now{box-shadow:none}
+.phone{box-shadow:0 70px 120px rgba(0,0,0,.75),0 0 0 2px rgba(255,255,255,.1),inset 0 0 0 2px rgba(255,255,255,.14)}` : "");
 // AS("photos/x.jpg" | "ui/x.png" | "cut/x.png") -> file URL inside the brand pack
 export const AS = p => { const i = p.indexOf("/"), k = p.slice(0, i); const dir = brand.assets[k]; if (!dir) throw new Error("unknown asset folder: " + p); return `file://${dir}/${p.slice(i + 1)}`; };
 export const LOGO = brand.logo;
@@ -99,7 +117,7 @@ body{font-family:${FONT},sans-serif;color:#fff;direction:${brand.dir_};-webkit-f
 .kick.c:before{background:var(--cyan)}
 /* ---- type ---- */
 .h{font-weight:900;line-height:1.22;letter-spacing:-.5px;text-shadow:0 6px 40px rgba(0,0,0,.55)}
-.hl{display:inline-block;background:var(--pink);color:#fff;padding:.02em .2em .04em;border-radius:.14em;line-height:1.08;box-shadow:0 12px 44px rgba(${R.primary},.5);text-shadow:none}
+.hl{display:inline-block;background:var(--pink);color:${T.onPrimary};padding:.02em .2em .04em;border-radius:.14em;line-height:1.08;box-shadow:0 12px 44px rgba(${R.primary},.5);text-shadow:none}
 .hlc{display:inline-block;background:var(--cyan);color:${T.ink};padding:.02em .2em .04em;border-radius:.14em;line-height:1.08;text-shadow:none}
 .grad{background:linear-gradient(90deg,${T.accent},${T.gradMid} 45%,${T.primary});-webkit-background-clip:text;background-clip:text;color:transparent;padding-bottom:.1em}
 .pk{color:var(--pink)}.cy{color:var(--cyan)}
@@ -121,14 +139,14 @@ body{font-family:${FONT},sans-serif;color:#fff;direction:${brand.dir_};-webkit-f
 .chips{display:flex;flex-wrap:wrap;gap:12px}
 .chip{display:inline-flex;align-items:center;gap:10px;border-radius:999px;font-weight:700;padding:12px 24px 9px;white-space:nowrap;
   background:rgba(255,255,255,.07);border:1.5px solid rgba(255,255,255,.18);color:rgba(255,255,255,.88)}
-.chip.on{background:linear-gradient(135deg,${T.primary},${T.primaryDeep});border-color:transparent;color:#fff;box-shadow:0 10px 30px rgba(${R.primary},.45),inset 0 1px 0 rgba(255,255,255,.35)}
+.chip.on{background:linear-gradient(135deg,${T.primary},${T.primaryDeep});border-color:transparent;color:${T.onPrimary};box-shadow:0 10px 30px rgba(${R.primary},.45),inset 0 1px 0 rgba(255,255,255,.35)}
 .chip.cy{background:var(--cyan);border-color:transparent;color:${T.onAccent};box-shadow:0 10px 30px rgba(${R.accent},.35)}
 .chip.w{background:#fff;color:${T.ink};border-color:#fff}
 /* ---- stickers ---- */
 .stk{position:absolute;z-index:40;display:inline-flex;align-items:center;gap:12px;padding:14px 28px 11px;border-radius:999px;font-weight:900;white-space:nowrap;box-shadow:0 16px 40px rgba(0,0,0,.5)}
-.stk.w{background:#fff;color:${T.ink}}.stk.p{background:var(--pink);color:#fff}.stk.c{background:var(--cyan);color:${T.ink}}
+.stk.w{background:#fff;color:${T.ink}}.stk.p{background:var(--pink);color:${T.onPrimary}}.stk.c{background:var(--cyan);color:${T.ink}}
 .stk.k{background:rgba(${R.ink},.85);color:#fff;border:2px solid rgba(255,255,255,.25)}
-.badge{position:absolute;z-index:42;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:900;line-height:1;background:var(--pink);color:#fff;
+.badge{position:absolute;z-index:42;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:900;line-height:1;background:var(--pink);color:${T.onPrimary};
   box-shadow:0 0 0 10px rgba(${R.primary},.25),0 24px 60px rgba(0,0,0,.55),0 0 60px rgba(${R.primary},.6)}
 /* ---- coach cut-out with two-tone rim light (from A) ---- */
 .coach{position:absolute;-webkit-mask-image:linear-gradient(to top,transparent 0,#000 22%)}
@@ -169,7 +187,7 @@ svg.wires{position:absolute;inset:0;width:100%;height:100%;z-index:58;pointer-ev
 .wave{display:flex;align-items:center;gap:5px;height:44px;direction:ltr}
 .wave i{display:block;width:6px;border-radius:4px;background:linear-gradient(${T.primary},${T.accent})}
 /* CTA */
-.cta-btn{display:inline-flex;align-items:center;gap:20px;font-weight:900;border-radius:999px;color:#fff;
+.cta-btn{display:inline-flex;align-items:center;gap:20px;font-weight:900;border-radius:999px;color:${T.onPrimary};
   background:linear-gradient(100deg,${T.primary},${T.ctaMid} 55%,${T.violet});box-shadow:0 24px 70px rgba(${R.primary},.55),inset 0 2px 0 rgba(255,255,255,.35)}
 .url{font-weight:800;direction:ltr;color:${T.accent};letter-spacing:.5px}
 .mega{font-weight:900;line-height:1.05;background:linear-gradient(95deg,${T.accent} 0%,${T.megaMid} 40%,${T.primary} 75%,${T.megaEnd} 100%);-webkit-background-clip:text;background-clip:text;color:transparent;
@@ -203,10 +221,10 @@ export const coach = (k, { x, y, w, h = w, id = "", style = "", cls = "", attrs 
 
 // phone with real UI screenshot; anchors are fractional points on the SCREENSHOT used as callout targets
 export const phone = (shot, { x, y, w, rot = "", id, anchors = {}, style = "", attrs = "", cls = "" }) =>
-  `<div class="phone ${cls}" id="${id}" ${attrs} style="left:${x}px;top:${y}px;width:${w}px;transform:${rot};${style}"><div class="scr"><div class="sb"><i></i></div><div style="position:relative"><img src="${AS("ui/" + shot + ".png")}">${Object.entries(anchors).map(([k, [fx, fy]]) => `<i class="anc" data-anc="${id}.${k}" style="left:${fx * 100}%;top:${fy * 100}%"></i>`).join("")}</div></div></div>`;
+  `<div class="phone ${cls}" id="${id}" ${attrs} style="left:${x}px;top:${y}px;width:${w}px;transform:${rot};${style}"><div class="scr"><div class="sb"><i></i></div><div style="position:relative"><img src="${AS("ui/" + (/\.(png|jpe?g|webp)$/i.test(shot) ? shot : shot + ".png"))}">${Object.entries(anchors).map(([k, [fx, fy]]) => `<i class="anc" data-anc="${id}.${k}" style="left:${fx * 100}%;top:${fy * 100}%"></i>`).join("")}</div></div></div>`;
 
 export const uiCut = (shot, { x, y, w, rot = 0, id = "", anchors = {}, style = "", attrs = "" }) =>
-  `<div class="ui" ${id ? `id="${id}"` : ""} ${attrs} style="left:${x}px;top:${y}px;width:${w}px;transform:rotate(${rot}deg);${style}"><img src="${AS("ui/" + shot + ".png")}">${Object.entries(anchors).map(([k, [fx, fy]]) => `<i class="anc" data-anc="${id}.${k}" style="left:${fx * 100}%;top:${fy * 100}%"></i>`).join("")}</div>`;
+  `<div class="ui" ${id ? `id="${id}"` : ""} ${attrs} style="left:${x}px;top:${y}px;width:${w}px;transform:rotate(${rot}deg);${style}"><img src="${AS("ui/" + (/\.(png|jpe?g|webp)$/i.test(shot) ? shot : shot + ".png"))}">${Object.entries(anchors).map(([k, [fx, fy]]) => `<i class="anc" data-anc="${id}.${k}" style="left:${fx * 100}%;top:${fy * 100}%"></i>`).join("")}</div>`;
 
 // callout label; `to` = "phoneId.anchor"; color p|c
 export const callout = ({ to, x, y, w, title, sub = "", fs = 34, color = "c", attrs = "" }) =>
@@ -273,7 +291,7 @@ function drawWires(){
   });
 }`;
 
-export const page = (W, H, body, extraCss = "", script = "") => `<!doctype html><html lang="${brand.lang}" dir="${brand.dir_}"><head><meta charset="utf-8"><style>${css(W, H)}${extraCss}</style></head>
+export const page = (W, H, body, extraCss = "", script = "") => `<!doctype html><html lang="${brand.lang}" dir="${brand.dir_}"><head><meta charset="utf-8"><style>${css(W, H)}${extraCss}${brandCss()}</style></head>
 <body><div class="stage" id="stage">${body}<div class="grain"></div></div><script>${wiresScript}${script}</script></body></html>`;
 
 // Truth gate: the brand's forbidden phrases (brand.config.json → truth.forbidden) must never reach a render.

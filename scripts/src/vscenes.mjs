@@ -165,7 +165,7 @@ export const vscenes = {
       <div class="mega" style="font-size:210px" ${an("slam", t + 0.25, 0.5)}>${d.mega ?? brand.cta.mega}</div>
       <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:-6px">${d.chips.map(([ic, tx], k) => `<span class="tchip" style="font-size:28px" ${an("pop", t + 0.6 + k * 0.15, 0.35)}>${icon(ic, 28, C)}${tx}</span>`).join("")}</div>
       <div style="display:flex;align-items:center;justify-content:space-between;margin-top:22px" ${an("up", t + 1.0, 0.4)}>
-        <div class="cta-btn pulse" style="font-size:52px;padding:22px 52px 16px">${d.button ?? brand.cta.button} ${icon("arrow", 46, "#fff", 2.8)}</div>
+        <div class="cta-btn pulse" style="font-size:52px;padding:22px 52px 16px">${d.button ?? brand.cta.button} ${icon("arrow", 46, T.onPrimary, 2.8)}</div>
         <div class="url" style="font-size:44px">${brand.url}</div></div>
       <div style="display:flex;align-items:center;gap:14px;margin-top:18px" ${an("fade", t + 1.3, 0.4)}>
         <div style="display:flex;direction:ltr">${brand.cast.filter(k => COACH[k]).map((k, j) => `<img src="${COACH[k].av}" style="width:48px;height:48px;border-radius:50%;border:3px solid ${T.ink};margin-left:${j ? -14 : 0}px;object-fit:cover">`).join("")}</div>
@@ -184,7 +184,7 @@ export const vscenes = {
     <div class="drift" data-amp="40">${leaks([[880, 700, 1000, P, .5], [140, 1000, 900, C, .45]])}</div>
     ${d.coach ? `<div class="push">${coach(d.coach, { x: d.coachX ?? 260, y: 560, w: 1000 })}</div><div class="abs" style="left:0;right:0;top:1240px;bottom:0;background:linear-gradient(to bottom,rgba(${R.ink},0),rgba(${R.ink},.85) 260px);z-index:10"></div>` : ""}
     ${H(d.h, { t, fs: d.fs || 128, kick: d.kick || "", top: 230 })}
-    ${(d.stickers || []).map((s, k) => `<div class="abs" style="left:${s.x}px;top:${s.y}px;z-index:44;transform:rotate(${s.rot || 0}deg)">${W("pop", t + 0.6 + k * 0.25, 0.4, `<div class="stk ${s.col || "w"}" style="position:relative;font-size:${s.fs || 44}px">${s.icon ? icon(s.icon, (s.fs || 44) - 2, s.col === "w" ? P : s.col === "c" ? T.ink : "#fff", 2.6) : ""}${s.tx}</div>`)}</div>`).join("")}`;
+    ${(d.stickers || []).map((s, k) => `<div class="abs" style="left:${s.x}px;top:${s.y}px;z-index:44;transform:rotate(${s.rot || 0}deg)">${W("pop", t + 0.6 + k * 0.25, 0.4, `<div class="stk ${s.col || "w"}" style="position:relative;font-size:${s.fs || 44}px">${s.icon ? icon(s.icon, (s.fs || 44) - 2, s.col === "w" ? P : s.col === "c" ? T.ink : s.col === "p" ? T.onPrimary : "#fff", 2.6) : ""}${s.tx}</div>`)}</div>`).join("")}`;
   },
 
   // phoneHero: a real app screen as the hero. d: bg, num?, label?, h, shot, w?, callouts: [{anc:[fx,fy], title, sub?, col}], chip?: {icon, tx}

@@ -1,7 +1,7 @@
 {
   "name": "content-studio",
   "displayName": "Content Studio",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Brand-free content engine: on-brand carousels, stories and 9:16 videos with a Gemini TTS narrator, karaoke captions, automatic motion and a truth gate, driven by the project's content-brand/ pack. Includes a skill that sets up a brand pack for any project.",
   "author": { "name": "Haitham", "email": "hh.kisha@amc.edu.sa" },
   "repository": "https://github.com/kooobra/content-studio",
