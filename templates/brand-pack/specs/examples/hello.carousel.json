@@ -1,0 +1,11 @@
+{
+  "$comment": "Starter carousel using only brand-free layouts. Copy to specs/<campaign>/<id>.carousel.json and edit.",
+  "id": "hello",
+  "slides": [
+    { "layout": "cover", "bg": "TODO-photo.jpg", "kick": "TODO", "h": "عنوان <span class=\"hl\">قوي</span>", "topics": ["نقطة 1", "نقطة 2", "نقطة 3"] },
+    { "layout": "rows", "bg": "TODO-photo.jpg", "num": "01", "kick": "TODO", "h": "قائمة <span class=\"cy\">مفيدة</span>",
+      "rows": [["check", "سطر أول", "1", "p"], ["check", "سطر ثاني", "2", "c"], ["info", "سطر ثالث", "", "w"]],
+      "note": { "icon": "info", "tx": "المصدر أو ملاحظة صادقة" } },
+    { "preset": "cta" }
+  ]
+}

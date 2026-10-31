@@ -1,0 +1,6 @@
+{
+  "name": "smart-ai-content-studio",
+  "private": true,
+  "type": "module",
+  "dependencies": { "playwright-core": "1.56" }
+}

@@ -1,0 +1,80 @@
+{
+  "$comment": "Brand pack for the content-studio engine. Paths are relative to this folder. Replace every TODO; run `node <plugin>/scripts/src/check-brand.mjs` to see what is still missing.",
+  "version": 1,
+  "id": "TODO-brand-id",
+  "name": "TODO اسم البراند",
+  "nameLatin": "TODO Brand Name",
+  "url": "TODO.example.com",
+  "site": "https://TODO.example.com",
+  "lang": "ar",
+  "dir": "rtl",
+  "logo": "assets/logo.svg",
+
+  "colors": {
+    "$comment": "primary = highlight/buttons, accent = second highlight, ink = the dark stage. The rest are optional gradient stops; they fall back to these three.",
+    "primary": "#FF2D9B",
+    "accent": "#00E5FF",
+    "ink": "#0B0B10"
+  },
+
+  "font": {
+    "family": "Tajawal",
+    "weights": [400, 500, 700, 800, 900],
+    "files": [
+      { "src": "fonts/tajawal/tajawal-{w}-arabic.woff2", "range": "U+0600-06FF,U+0750-077F,U+FB50-FDFF,U+FE70-FEFF,U+200C-200F,U+064B-065F" },
+      { "src": "fonts/tajawal/tajawal-{w}-latin.woff2", "range": "U+0000-00FF,U+2000-206F" }
+    ]
+  },
+
+  "assets": { "photos": "assets/photos", "ui": "assets/ui", "cut": "assets/cut", "credits": "assets/credits.txt" },
+
+  "characters": {
+    "$comment": "Optional. Brand characters/mascots with a transparent cut-out (cut) and a round avatar. Leave list empty if the brand has none.",
+    "default": null,
+    "cast": [],
+    "list": {},
+    "voiceNoteTag": ""
+  },
+
+  "cta": { "mega": "TODO كلمة كبيرة (مثل: مجاناً)", "button": "TODO نص الزر" },
+
+  "labels": { "surveyTag": "", "foodSurveyTag": "", "swipe": "اسحب", "pollReply": "جاوب بالخاص" },
+
+  "truth": {
+    "doc": "truth.md",
+    "forbidden": ["100%", "مضمون"],
+    "westernDigits": true
+  },
+
+  "voice": {
+    "file": "voice/voice.json",
+    "model": "gemini-3.8-flash-tts",
+    "namePrefix": "TODO-brand-id-ad",
+    "narrator": { "name": "TODO اسم البراند", "tag": "", "avatar": "assets/logo.svg" }
+  },
+
+  "capture": { "url": "https://TODO.example.com", "locale": "ar-SA", "dismiss": [], "shots": [] },
+
+  "defaults": { "motion": "auto", "transition": "auto", "fx": "auto" },
+
+  "presets": {
+    "narrator": {
+      "model": "gemini-3.8-flash-tts",
+      "voice": { "gender": "male", "prompt": "TODO: who the narrator is (age, warmth, accent/dialect), in English." },
+      "style": "TODO: default delivery, in English (energetic / calm / ...), and the dialect."
+    },
+    "styles": {
+      "hook": "Curious, playful hook question, lively and inviting.",
+      "close": "Upbeat, confident call to action with a smile, slightly slower and clear.",
+      "ask": "Warm, friendly question to the viewer, inviting a reply, relaxed pace."
+    },
+    "cta": {
+      "layout": "cta", "bg": "TODO-photo.jpg", "kick": "TODO", "h": "TODO العرض<br>بسطرين",
+      "chips": [["check", "TODO ميزة 1"], ["check", "TODO ميزة 2"]],
+      "fine": "TODO السطر الصغير (الشروط بصدق)"
+    }
+  },
+
+  "docs": { "rules": "rules.md", "brand": "brand.md", "truth": "truth.md", "voice": "voice.md", "publishing": "publishing.md", "examples": "examples" },
+  "specs": "specs"
+}

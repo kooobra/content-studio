@@ -1,0 +1,22 @@
+{
+  "$comment": "Starter 15 s video using only brand-free layouts. Copy to specs/<campaign>/<id>.video.json, write the voice lines (≈2.4 words/s), run voiceover.mjs then video.mjs.",
+  "id": "hello-video",
+  "total": 15.0,
+  "vo": {
+    "preset": "narrator",
+    "lines": [
+      { "at": 0.15, "text": "TODO سؤال الهوك؟", "style": "@hook" },
+      { "at": 3.65, "text": "TODO الفكرة الأساسية بجملة وحدة." },
+      { "at": 7.65, "text": "TODO ثلاث نقاط سريعة." },
+      { "at": 11.15, "text": "TODO الدعوة للتجربة.", "style": "@close" }
+    ]
+  },
+  "clips": [],
+  "scenes": [
+    { "layout": "statement", "t0": 0, "t1": 3.5, "bg": "TODO-photo.jpg", "kick": "TODO", "h": "سؤال <span class=\"hl\">الهوك</span>؟" },
+    { "layout": "statement", "t0": 3.5, "t1": 7.5, "bg": "TODO-photo.jpg", "h": "الفكرة <span class=\"cy\">الأساسية</span>" },
+    { "layout": "checklist", "t0": 7.5, "t1": 11.0, "bg": "TODO-photo.jpg", "h": "ثلاث <span class=\"hl\">نقاط</span>",
+      "rows": [["check", "نقطة 1", "", "p"], ["check", "نقطة 2", "", "c"], ["check", "نقطة 3", "", "w"]] },
+    { "preset": "cta", "t0": 11.0, "t1": 15.0 }
+  ]
+}

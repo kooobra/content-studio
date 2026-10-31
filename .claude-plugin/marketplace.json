@@ -1,0 +1,12 @@
+{
+  "name": "kooobra-tools",
+  "description": "Haitham's Claude Code plugins",
+  "owner": { "name": "Haitham" },
+  "plugins": [
+    {
+      "name": "content-studio",
+      "source": "./",
+      "description": "Brand content engine (carousels, stories, 9:16 videos) driven by a project's content-brand/ pack"
+    }
+  ]
+}

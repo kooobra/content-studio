@@ -1,0 +1,3 @@
+// Prints the Python (with Pillow) set up by setup.sh, for shell scripts: "$(node src/python.mjs)" -I src/review.py ...
+import { PYTHON } from "./deps.mjs";
+console.log(PYTHON);
